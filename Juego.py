@@ -24,12 +24,12 @@ while True:
         break
 
 print(usuario,numero)
+picas=0
+fijas=0
 
-    for i in numero:
-        for j in usuario:
-            if ((i==j) and (num[i]=usuario[j]))
-               fijas=fijas+1
-            if ((i!=j) and (num[i]=usuario[j]))
+    for i in range (len(numero)):
+        for j in range (len(usuario)):
+            if numero[i]==usuario[j] and i!=j:
                picas=picas+1
 
 print(picas)
