@@ -1,22 +1,49 @@
-import random
 from fcartas import *
 
-bar=[]
-jugador=[]
-casa=[]
-for v in ['A','2','3','4','5','6','7','8','9','J','Q','K']:
-   for p in ['C','D','P','T']:
-        bar.append(v+p)
+baraja=[]
+player=[]
+house=[]
 
-#print(bar)
+baraja=cargarb(baraja)
 
+#print(baraja)
 
-for i in (0,1):
-  casa.append(bar[random.randint(0,47)])
-for j in (0,1):
-  jugador.append(bar[random.randint(0,47)])
-print("Casa: " + str(casa))
-print("Jugador: " + str(jugador))
+player=gst(player)
+print("Sus cartas son: " + str(player))
+print("Su Score es de: " + str(sumcar(player)))
 
-sumacartas(casa)
+house=gst(house)
+print("La carta de la casa es: " + str(house[0]))
 
+ciclo=True
+while ciclo:
+
+      seguir=input("Desea seguir jugando (y/n): ")
+
+      if(seguir=='y'):
+         player,sc=nuevacarta(player)
+         print(player,sc)
+         if(sc>21):
+            print("Perdiste")
+            break
+
+      else:
+           while True:
+                 if(sumcar(house)>= sumcar(player)and sumcar(house)<= 21):
+                    print("Perdiste,el score de la casa fue: "+str(sumcar(house)))
+                    print(house)
+                    ciclo=False
+                    break
+                 else:
+                      house,sh=nuevacarta(house)
+                      if(sh>21):
+                          print("Ganaste")
+                          print("El score de la casa fue: "+str(sh))
+                          print(house)
+                          ciclo=False
+                          break
+                          
+                  
+
+           
+     
